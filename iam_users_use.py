@@ -1,3 +1,8 @@
+"""
+    Esse script tem como objetivo obter todos os usuários que não fizeram uso do
+    acesso IAM nos ultimos 55 dias.
+"""
+
 import json
 from boto3 import Session
 from datetime import datetime
