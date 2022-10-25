@@ -45,15 +45,15 @@ for port in PORTS:
                 insecure_egress_ports.append(sec_groups['GroupName'])
 
 # Definindo as mensagens a serem enviadas via discord webhook
-    if insecure_from_ports or insecure_to_ports:
-        message('Portas ingress FROM verificadas', f'{[port for port in PORTS]} / GroupNames identificados: {[gname for gname in insecure_from_ports]}').execute()
-        message('Portas ingress TO verificadas', f'{[port for port in PORTS]} / GroupNames identificados: {[gname for gname in insecure_to_ports]}').execute()
-        
-    else:
-        message('Portas ingress verificadas', f'{[port for port in PORTS]} / Nenhuma porta insegura identificada' ).execute()
+if insecure_from_ports or insecure_to_ports:
+    message('Portas ingress FROM verificadas', f'{[port for port in PORTS]} / GroupNames identificados: {[gname for gname in insecure_from_ports]}').execute()
+    message('Portas ingress TO verificadas', f'{[port for port in PORTS]} / GroupNames identificados: {[gname for gname in insecure_to_ports]}').execute()
     
-    if insecure_egress_ports:
-        message('Portas egress FROM/TO verificadas', f'{[port for port in PORTS]} / GroupNames identificados {[gname for gname in insecure_egress_ports]}').execute()
-    
-    else:
-        message('Portas egress verificadas', f'{[port for port in PORTS]} / Nenhuma porta insegura identificada').execute()
+else:
+    message('Portas ingress verificadas', f'{[port for port in PORTS]} / Nenhuma porta insegura identificada' ).execute()
+
+if insecure_egress_ports:
+    message('Portas egress FROM/TO verificadas', f'{[port for port in PORTS]} / GroupNames identificados {[gname for gname in insecure_egress_ports]}').execute()
+
+else:
+    message('Portas egress verificadas', f'{[port for port in PORTS]} / Nenhuma porta insegura identificada').execute()
